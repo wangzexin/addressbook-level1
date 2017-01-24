@@ -143,14 +143,6 @@ public class AddressBook {
      * For example, a person's name is stored as the 0th element in the array.
      */
     private enum PersonProperty {NAME, EMAIL, PHONE};
-    private static final String PERSON_DATA_INDEX_NAME = "name";
-    private static final String PERSON_DATA_INDEX_PHONE = "phone";
-    private static final String PERSON_DATA_INDEX_EMAIL = "email";
-
-    /**
-     * The number of data elements for a single person.
-     */
-    private static final int PERSON_DATA_COUNT = 3;
 
     /**
      * Offset required to convert between 1-indexing and 0-indexing.COMMAND_
@@ -162,7 +154,7 @@ public class AddressBook {
     private static final int SPLIT_ARGS_INDEX2 = 1;
     private static final int SPLIT_ARGS_INDEX3 = 2;
     
-    // Removed magic number from command type and args
+    // Removed magic number from executeCommand()
     private static final int COMMAND_TYPE_INDEX = 0;
     private static final int COMMAND_ARGS_INDEX = 1;
 
