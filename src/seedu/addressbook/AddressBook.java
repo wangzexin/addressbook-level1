@@ -210,7 +210,7 @@ public class AddressBook {
      */
 
     public static void main(String[] args) {
-        showWelcomeMessage();
+        showToUser(DIVIDER, DIVIDER, VERSION, MESSAGE_WELCOME, DIVIDER);
         if (args.length >= 2) {
 		    showToUser(MESSAGE_INVALID_PROGRAM_ARGS);
 		    exitProgram();
@@ -221,12 +221,19 @@ public class AddressBook {
 		} else {
 			exitProgram();
 		}
-        loadDataFromStorage();
+        ALL_PERSONS.clear();
+		ALL_PERSONS.addAll(loadPersonsFromFile(storageFilePath));
         while (true) {
-            String userCommand = getUserInput();
-            echoUserCommand(userCommand);
+            System.out.print(LINE_PREFIX + "Enter command: ");
+            String inputLine = SCANNER.nextLine();
+            // silently consume all blank and comment lines
+            while (inputLine.trim().isEmpty() || inputLine.trim().charAt(0) == INPUT_COMMENT_MARKER) {
+                inputLine = SCANNER.nextLine();
+            }
+            String userCommand = inputLine;
+            showToUser("[Command entered:" + userCommand + "]");
             String feedback = decipherCommand(userCommand);
-            showResultToUser(feedback);
+            showToUser(feedback, DIVIDER);
         }
     }
 
