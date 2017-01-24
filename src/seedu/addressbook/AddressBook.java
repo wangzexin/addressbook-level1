@@ -161,6 +161,10 @@ public class AddressBook {
     private static final int SPLIT_ARGS_INDEX1 = 0;
     private static final int SPLIT_ARGS_INDEX2 = 1;
     private static final int SPLIT_ARGS_INDEX3 = 2;
+    
+    // Removed magic number from command type and args
+    private static final int COMMAND_TYPE_INDEX = 0;
+    private static final int COMMAND_ARGS_INDEX = 1;
 
     /**
      * If the first non-whitespace character in a user's input line is this, that line will be ignored.
@@ -371,8 +375,8 @@ public class AddressBook {
      */
     private static String executeCommand(String userInputString) {
         final String[] commandTypeAndParams = splitCommandWordAndArgs(userInputString);
-        final String commandType = commandTypeAndParams[0];
-        final String commandArgs = commandTypeAndParams[1];
+        final String commandType = commandTypeAndParams[COMMAND_TYPE_INDEX];
+        final String commandArgs = commandTypeAndParams[COMMAND_ARGS_INDEX];
         switch (commandType) {
         case COMMAND_ADD_WORD:
             return executeAddPerson(commandArgs);
