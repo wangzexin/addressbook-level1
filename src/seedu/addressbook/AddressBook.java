@@ -410,8 +410,8 @@ public class AddressBook {
         		return personA.get(PersonProperty.NAME).compareTo(personB.get(PersonProperty.NAME));
         	}
         });
-        showToUser(toBeDisplayed);
-        return getMessageForPersonsDisplayedSummary(toBeDisplayed);
+        showToUser(personsCopy);
+        return getMessageForPersonsDisplayedSummary(personsCopy);
 	}
     
 	/**
