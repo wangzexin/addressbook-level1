@@ -385,7 +385,8 @@ public class AddressBook {
         case COMMAND_EXIT_WORD:
             executeExitProgramRequest();
         default:
-            return getMessageForInvalidCommandInput(commandType, getUsageInfoForAllCommands());
+            return getMessageForInvalidCommandInput(
+            		commandType, getUsageInfoForAllCommands());
         }
     }
 
@@ -418,7 +419,8 @@ public class AddressBook {
      */
     private static String executeAddPerson(String commandArgs) {
         // try decoding a person from the raw args
-        final Optional<HashMap<PersonProperty, String>> decodeResult = decodePersonFromString(commandArgs);
+        final Optional<HashMap<PersonProperty, String>> decodeResult = 
+        		decodePersonFromString(commandArgs);
 
         // checks if args are valid (decode result will not be present if the person is invalid)
         if (!decodeResult.isPresent()) {
@@ -452,7 +454,8 @@ public class AddressBook {
      */
     private static String executeFindPersons(String commandArgs) {
         final Set<String> keywords = extractKeywordsFromFindPersonArgs(commandArgs);
-        final ArrayList<HashMap<PersonProperty, String>> personsFound = getPersonsWithNameContainingAnyKeyword(keywords);
+        final ArrayList<HashMap<PersonProperty, String>> personsFound = 
+        		getPersonsWithNameContainingAnyKeyword(keywords);
         showToUser(personsFound);
         return getMessageForPersonsDisplayedSummary(personsFound);
     }
