@@ -90,6 +90,7 @@
   # listing indexes get updated on next request
   delete 1
   list
+  sort
 
 ##########################################################
 # test clear command
@@ -98,6 +99,7 @@
   # clears all
   clear
   list
+  sort
 
 ##########################################################
 # test exit command
