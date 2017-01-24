@@ -216,7 +216,7 @@ public class AddressBook {
         while (true) {
             String userCommand = getUserInput();
             echoUserCommand(userCommand);
-            String feedback = executeCommand(userCommand);
+            String feedback = decipherCommand(userCommand);
             showResultToUser(feedback);
         }
     }
@@ -365,11 +365,15 @@ public class AddressBook {
      * @param userInputString  raw input from user
      * @return  feedback about how the command was executed
      */
-    private static String executeCommand(String userInputString) {
+    private static String decipherCommand(String userInputString) {
         final String[] commandTypeAndParams = splitCommandWordAndArgs(userInputString);
         final String commandType = commandTypeAndParams[COMMAND_TYPE_INDEX];
         final String commandArgs = commandTypeAndParams[COMMAND_ARGS_INDEX];
-        switch (commandType) {
+        return executeCommand(commandType, commandArgs);
+    }
+
+	private static String executeCommand(final String commandType, final String commandArgs) {
+		switch (commandType) {
         case COMMAND_ADD_WORD:
             return executeAddPerson(commandArgs);
         case COMMAND_FIND_WORD:
@@ -388,7 +392,7 @@ public class AddressBook {
             return getMessageForInvalidCommandInput(
             		commandType, getUsageInfoForAllCommands());
         }
-    }
+	}
 
     /**
      * Splits raw user input into command word and command arguments string
